@@ -8,7 +8,7 @@ async function checkVersion(client:GenomeNexusAPI) {
     }
 }
 
-const client = new GenomeNexusAPI("https://genomenexus.herokuapp.com");
+const client = new GenomeNexusAPI("https://genomenexus.org/rc");
 checkVersion(client);
 
 export default client;
