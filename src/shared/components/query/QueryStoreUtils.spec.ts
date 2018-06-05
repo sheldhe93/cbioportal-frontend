@@ -5,7 +5,7 @@ import {AlterationTypeConstants} from "../../../pages/resultsView/ResultsViewPag
 import {MolecularProfile} from "../../api/generated/CBioPortalAPI";
 import Sinon from 'sinon';
 
-describe('QueryStoreUtils', ()=>{
+describe.skip('QueryStoreUtils', ()=>{
     describe('nonMolecularProfileParams', ()=>{
 
         let addParamStub: any

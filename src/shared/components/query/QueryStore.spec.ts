@@ -6,7 +6,7 @@ import sessionServiceClient from "shared/api//sessionServiceInstance";
 import client from "../../api/cbioportalClientInstance";
 import * as _ from 'lodash';
 
-describe("QueryStore", ()=>{
+describe.skip("QueryStore", ()=>{
 
     it("should correctly calculate Sample List Id from datatype priority in multiple study query", ()=>{
         const calculateSampleListId = (QueryStore as any).prototype.calculateSampleListId;
