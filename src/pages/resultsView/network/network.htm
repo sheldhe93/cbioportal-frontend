@@ -16,7 +16,7 @@
     var apiHost;
     // if this fails, we are NOT in production, so allow anything
     try {
-        apiHost = window.parent.location.hostname;
+        apiHost = "//" + window.parent.location.hostname;
     } catch (exc){
         apiHost = "//" + queryParams.apiHost;
     }
