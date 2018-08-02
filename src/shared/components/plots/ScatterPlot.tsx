@@ -49,7 +49,7 @@ const CORRELATION_INFO_Y = 100; // experimentally determined
 export const LEGEND_Y = CORRELATION_INFO_Y + 30 /* approximate correlation info height */ + 30 /* top padding*/
 const RIGHT_GUTTER = 120; // room for correlation info and legend
 const NUM_AXIS_TICKS = 8;
-const PLOT_DATA_PADDING_PIXELS = 50;
+const PLOT_DATA_PADDING_PIXELS = 100;
 const MIN_LOG_ARGUMENT = 0.01;
 const LEFT_PADDING = 25;
 
@@ -197,7 +197,7 @@ export default class ScatterPlot<D extends IBaseScatterPlotData> extends React.C
     }
 
     @computed get plotDomain() {
-        // data extremes plus padding
+        // data extremes
         const max = {x:Number.NEGATIVE_INFINITY, y:Number.NEGATIVE_INFINITY};
         const min = {x:Number.POSITIVE_INFINITY, y:Number.POSITIVE_INFINITY};
         for (const d of this.props.data) {
@@ -326,6 +326,7 @@ export default class ScatterPlot<D extends IBaseScatterPlotData> extends React.C
                                 height={this.props.chartHeight}
                                 standalone={false}
                                 domainPadding={PLOT_DATA_PADDING_PIXELS}
+                                singleQuadrantDomainPadding={false}
                             >
                                 {this.title}
                                 {this.legend}
