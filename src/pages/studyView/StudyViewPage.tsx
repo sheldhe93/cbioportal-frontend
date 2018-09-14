@@ -350,13 +350,12 @@ export default class StudyViewPage extends React.Component<IStudyViewPageProps, 
 
     render() {
         if (
-            this.store.queriedSampleIdentifiers.isComplete &&
-            this.store.invalidSampleIds.isComplete &&
             _.isEmpty(this.store.unknownQueriedIds) &&
             !_.isEmpty(this.store.queriedStudies)
             ) {
             return (
                 <div className="studyView">
+                    <LoadingIndicator isLoading={(this.store.queriedSampleIdentifiers.isPending ||this.store.invalidSampleIds.isPending)} isGlobal={true}/>
                     <div className="topBanner">
                         <div className="studyViewHeader">
                             <If condition={this.store.queriedStudies.length === 1}>
@@ -456,7 +455,7 @@ export default class StudyViewPage extends React.Component<IStudyViewPageProps, 
                 </div>
             )
         } else {
-            //TODO: update with loading
+            <LoadingIndicator isLoading={this.store.filteredVirtualStudies.isPending} isGlobal={true}/>
             if(this.store.filteredVirtualStudies.isComplete && !_.isEmpty(this.store.unknownQueriedIds)) {
                 return (
                     <div style={{ margin: "0px auto", maxWidth: "50%", fontSize: "16px" }}>
