@@ -5,6 +5,7 @@
     position: relative;
     flex-direction: column;
     display: flex;
+    border-radius:$border-radius-base;
 
     &.analysisTarget {
         border: 2px solid #e5e076;
