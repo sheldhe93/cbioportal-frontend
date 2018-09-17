@@ -19,16 +19,24 @@ $fontSize: 11px;
 }
 
 .controls {
+  position:absolute;
+  background:$veryLightGrey;
+  right:1px;
+  top:1px;
+  border-radius:$border-radius-base;
+  padding:3px 3px 3px 3px !important;
   flex-shrink: 0;
-  color: grey;
   display: flex;
   align-items: baseline;
   padding: 2px 0 1px 0;
 }
 
 .item {
-  margin: 0 0 0 3px;
+  margin-right:8px;
   font-size: $fontSize + 1px;
+  &:last-child {
+    margin-right:0;
+  }
 }
 
 .survivalIcon {
@@ -45,6 +53,7 @@ $fontSize: 11px;
 }
 
 .downloadControl {
+
   display: flex;
   flex-direction: column;
   button {

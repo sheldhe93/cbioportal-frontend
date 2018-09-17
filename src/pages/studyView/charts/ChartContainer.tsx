@@ -388,7 +388,7 @@ export class ChartContainer extends React.Component<IChartContainerProps, {}> {
 
     public render() {
         return (
-            <div className={classnames(styles.chart, this.chartWidth, this.chartHeight, { [styles.analysisTarget]:this.isAnalysisTarget })}
+            <div className={classnames(styles.chart, this.chartWidth, this.chartHeight, { [styles.analysisTarget]:this.isAnalysisTarget, [styles.activeChart]:this.mouseInChart })}
                  onMouseEnter={this.handlers.onMouseEnterChart}
                  onMouseLeave={this.handlers.onMouseLeaveChart}>
                 <ChartHeader

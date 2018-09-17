@@ -557,6 +557,11 @@ h3.hr {
   border-right:1px dashed $borderColor;
   display:flex !important;
   align-items: center;
+  white-space: nowrap;
+
+  .btn-group {
+    display:flex;
+  }
 
   h5 {
     font-weight:bold !important;

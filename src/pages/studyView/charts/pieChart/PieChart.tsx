@@ -239,7 +239,7 @@ export default class PieChart extends React.Component<IPieChartProps, {}> implem
     public render() {
         // 350px => width of tooltip
         // 195px => width of chart
-        let left = _.isEqual(this.props.placement, 'right') ? '195px' : '-350px'
+        let left = _.isEqual(this.props.placement, 'right') ? 0 : -335
         return (
             <div>
                 <If condition={this.showTooltip}>
@@ -247,9 +247,8 @@ export default class PieChart extends React.Component<IPieChartProps, {}> implem
                         className={classnames('popover', this.props.placement)}
                         onMouseLeave={() => this.tooltipMouseLeave()}
                         onMouseEnter={() => this.tooltipMouseEnter()}
-                        style={{ display: 'block', position: 'absolute', left: left, width: '350px', maxWidth: '350px' }}>
+                        style={{ display: 'block', position: 'absolute', left: left }}>
 
-                        <div className="arrow" style={{ top: 20 }}></div>
                         <div className="popover-content">
                             <ClinicalTable
                                 width={300}
