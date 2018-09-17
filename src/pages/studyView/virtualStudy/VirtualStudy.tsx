@@ -108,7 +108,7 @@ export default class VirtualStudy extends React.Component<IVirtualStudyProps, {}
     }, undefined);
 
     @computed get virtualStudyUrl() {
-        return buildCBioPortalUrl({pathname:'newstudy', query: {id: this.virtualStudy.result ? this.virtualStudy.result.id : ''}});
+        return buildCBioPortalPageUrl({pathname:'newstudy', query: {id: this.virtualStudy.result ? this.virtualStudy.result.id : ''}});
     }
 
     @autobind
