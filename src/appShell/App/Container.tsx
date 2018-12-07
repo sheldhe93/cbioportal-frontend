@@ -1,14 +1,15 @@
 import * as _ from 'lodash';
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import UnsupportedBrowserModal from "shared/components/unsupportedBrowserModal/UnsupportedBrowserModal";
 
 import '../../globalStyles/prefixed-global.scss';
 import PortalHeader from "./PortalHeader";
 import PortalFooter from "./PortalFooter";
-import {remoteData} from "../../shared/api/remoteData";
+import { remoteData } from "../../shared/api/remoteData";
 import request from 'superagent';
 import getBrowserWindow from "../../shared/lib/getBrowserWindow";
-import {observer} from "mobx-react";
+import { observer } from "mobx-react";
 import client from "../../shared/api/cbioportalClientInstance";
 import internalClient from "../../shared/api/cbioportalInternalClientInstance";
 import {
@@ -22,15 +23,15 @@ import genomeNexusClient from '../../shared/api/genomeNexusClientInstance';
 import internalGenomeNexusClient from '../../shared/api/genomeNexusInternalClientInstance';
 import oncoKBClient from '../../shared/api/oncokbClientInstance';
 import genome2StructureClient from '../../shared/api/g2sClientInstance';
-import {getSessionKey} from "../../shared/lib/ExtendedRouterStore";
+import { getSessionKey } from "../../shared/lib/ExtendedRouterStore";
 import LoadingIndicator from "../../shared/components/loadingIndicator/LoadingIndicator";
 import AppConfig from "appConfig";
 import Helmet from "react-helmet";
-import {setServerConfig, updateConfig} from "../../config/config";
-import {embedGoogleAnalytics} from "../../shared/lib/tracking";
-import {computed} from "mobx";
+import { setServerConfig, updateConfig } from "../../config/config";
+import { embedGoogleAnalytics } from "../../shared/lib/tracking";
+import { computed } from "mobx";
 import { If, Else } from 'react-if';
-import {AppStore} from "../../AppStore";
+import { AppStore } from "../../AppStore";
 
 interface IContainerProps {
     location: Location;
@@ -41,27 +42,27 @@ interface IContainerProps {
 export default class Container extends React.Component<IContainerProps, {}> {
 
     static contextTypes = {
-        router: React.PropTypes.object
+        router: PropTypes.object
     };
 
     context: { router: any };
 
-    private get routingStore(){
+    private get routingStore() {
         return getBrowserWindow().routingStore;
     }
 
-    private get appStore(){
+    private get appStore() {
         return getBrowserWindow().globalStores.appStore;
     }
 
     renderChildren() {
-        const childProps = {...this.props};
-        const {children} = this.props;
+        const childProps = { ...this.props };
+        const { children } = this.props;
         return React.Children.map(children,
             c => React.cloneElement(c as React.ReactElement<any>, childProps));
     }
 
-    @computed get isSessionLoaded(){
+    @computed get isSessionLoaded() {
 
         return !this.routingStore.needsRemoteSessionLookup || this.routingStore.remoteSessionData.isComplete;
 
@@ -79,19 +80,19 @@ export default class Container extends React.Component<IContainerProps, {}> {
 
                     <div className="pageTopContainer">
                         <div className="contentWidth">
-                            <PortalHeader appStore={this.appStore}/>
+                            <PortalHeader appStore={this.appStore} />
                         </div>
                     </div>
 
                     <div className="contentWrapper">
-                        <UnsupportedBrowserModal/>
+                        <UnsupportedBrowserModal />
                         {(this.isSessionLoaded) && this.props.children}
                     </div>
 
-                    <PortalFooter appStore={this.appStore}/>
+                    <PortalFooter appStore={this.appStore} />
                 </div>
                 <Else>
-                    <LoadingIndicator isLoading={!this.isSessionLoaded} center={true} size={"big"}/>
+                    <LoadingIndicator isLoading={!this.isSessionLoaded} center={true} size={"big"} />
                 </Else>
             </If>
         );
