@@ -163,7 +163,7 @@
     "rc-animate": "^2.4.1",
     "rc-slider": "^8.3.5",
     "rc-tooltip": "^3.4.2",
-    "react": "^15.5.0",
+    "react": "^15.6.2",
     "react-addons-pure-render-mixin": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
     "react-bootstrap": "^0.31.5",
